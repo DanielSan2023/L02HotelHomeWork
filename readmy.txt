@@ -1,0 +1,52 @@
+ZADÁNÍ
+Téma
+Potřebujeme evidovat hosty (guest), které ubytováváme v hotelu.
+
+O každém hostu musíme uložit jméno, příjmení a datum narození.
+
+Hosty vždy ubytováváme na pokojích (room). Pokoj je identifikován svým číslem. O každém pokoji chceme evidovat, kolik lůžek tam je (neřeš přistýlky apod.), zda má pokoj balkón a zda má výhled na moře a jaká je cena pokoje za jednu noc (předpokládej, že je cena pevně daná bez ohledu na sezónu a počet ubytovaných).
+
+V rámci jedné rezervace (booking) vždy přiřazujeme pokoj jednomu nebo více hostům na časové období mezi dvěma daty (například pokoj číslo 3 na období od 15. 7. do 24. 7. 2021). Pobyt je buď pracovní, nebo rekreační (type of vacation).
+
+Chceme také mít k dispozici třídu, která bude uchovávat všechny rezervace (například list of bookings), které jsme v systému vytvořili a bude mít metodu, která vypíše informace o všech rezervacích.
+
+Úkol
+Tvým úkolem je:
+
+Připravit třídy pro ukládání dat.
+Vytvořit konstruktory a přístupové metody.
+Poté vytvoř vzorovou testovací aplikaci v metodě main.
+TESTOVACÍ APLIKACE
+Vytvoř kód metody main
+Vytvoř hosty Adélu Malíkovou (narozena 13. 3. 1993) a Jana Dvořáčka (narozen 5.5.1995). Vypiš na obrazovku jejich souhrnný popis ve formátu: Adéla Malíková (1993-03-13).
+Jestli chceš, můžeš zkusit datum vypsat v českém formátu 13. 3. 1993. Buď pomocí metod pro získání dne, měsíce a roku, nebo pomocí třídy pro formátování dat. Obojí je v Javě k dipozici — jestli chceš, zkus použít internetový vyhledávač a najít řešení.
+
+Vytvoř pokoje a vypiš na obrazovku jejich popis:
+pokoj číslo 1 a pokoj číslo 2 jsou jednolůžkové za cenu 1000 Kč/noc, s balkonem a výhledem na moře.
+pokoj číslo 3 je trojlůžkový za cenu 2400 Kč/noc, bez balkónu, s výhledem na moře.
+Připrav rezervace:
+pro Adélu na pokoj č. 1 od 19. do 26. 7. 2021.
+pro oba (společná rezervace) na pokoj č. 3 od 1. do 14. 9. 2021.
+Vypiš seznam všech rezervací.
+ODEVZDÁNÍ ÚKOLU
+Způsob odevzdání
+Snaž se vytvořit projekt s řešením a publikovat ho na GitHub. Lektorovi pošleš odkaz na repozitář.
+
+Když ti to nepůjde, konzultuj problém s lektorem — pomůže ti, nebo se domluvíte na jiném způsobu odevzdání.
+
+ZKONTROLUJ SI
+Časté chyby
+Můžeme sledovat historii rezervací? Nepřepíše se novou rezervací informací o rezervaci hosta informace o předchozí rezervaci?
+Zkus přidat dvě různé rezervace pro jednoho hosta na různé pokoje.
+Zkus přidat dvě různé rezervace na jeden pokoj v různá data.
+(Údaje o rezervaci by neměly být součástí hosta ani pokoje.)
+Lze evidovat více hostů v rámci jedné rezervace?
+Je zajištěno, aby u každé rezervace byl registrovaný minimálně jeden host?
+Neměla by jít vytvořit rezervace bez hosta.
+Jsou v rámci rezervace jako atribut objekty tříd Guest a Room?
+Nemělo by se stát, že v rezervaci je jako atribut pouze id hosta či číslo pokoje. To vyžaduje dohledávání správných objektů a je zbytečné. Atributem rezervace by měly být přímo objekty hosta a pokoje.
+Zajímavé body, challenge
+Je rozlišen pracovní a rekreační pobyt?
+Volitelně si můžeš zkusit využít enum — ale ten jsme se zatím neučili.
+Volitelně můžeš zkusit zařídit, aby se při vytváření rezervace rezervovalo automaticky na rekreační pobyt od dneška na dalších 6 nocí, pokud nezadáš konkrétní data začátku a konce. (Pokud uvedeš všechny parametry rezervace, použijí se tak, jak jsou zadané.)
+Volitelné: Ve třídě Guest můžeš zkusit vytvořit metodu getDescription, která vrátí čitelný textový popis, zkombinovaný ze jména a data narození. Tím už nahlédneš do učiva třetí lekce.
