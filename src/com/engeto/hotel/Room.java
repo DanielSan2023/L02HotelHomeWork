@@ -21,6 +21,22 @@ public class Room {
     //endregion
 
 
+    public boolean isBalcony() {
+        return Balcony;
+    }
+
+    public void setBalcony(boolean balcony) {
+        Balcony = balcony;
+    }
+
+    public boolean isSeaView() {
+        return SeaView;
+    }
+
+    public void setSeaView(boolean seaView) {
+        SeaView = seaView;
+    }
+
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -35,4 +51,16 @@ public class Room {
                 "roomNumber=" + roomNumber +
                 '}';
     }
+
+    public void viewRoom(){
+         System.out.println(
+                 "Číslo izby: "+roomNumber +
+                 " počet postelí: "+ numberOfBeds +
+                 " cena za noc:  " +pricePerNight+" CK"+
+          (isBalcony()?" s balkónom a  ":" bez balkona a "   )
+          + (isSeaView()?"  s vyhladom na more": " ")
+         );
+
+    }
 }
+
