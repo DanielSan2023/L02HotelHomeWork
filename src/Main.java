@@ -19,9 +19,15 @@ public class Main {
                 LocalDate.of(1993,03,13));
         Guest guest2 = new Guest("Ján","Dvoráček",
                 LocalDate.of(1995,05,5));
+//        guests.add(guest1);
+//        guests.add(guest2);
+        guest1.viewGuest();
+        guest2.viewGuest();
 
-        guests.add(guest1);
-        guests.add(guest2);
+
+
+
+
 
         room1 = new Room(1,1,true,true,1000);
         room2 = new Room(2,1,true,true,1000);
