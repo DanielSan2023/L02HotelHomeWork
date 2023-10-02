@@ -22,10 +22,13 @@ public class Main {
                 LocalDate.of(1993,03,13));
         Guest guest2 = new Guest("Ján","Dvoráček",
                 LocalDate.of(1995,05,5));
-        guest1.viewGuest();
-        guest2.viewGuest();
         guestForBooking2.add(guest1);
         guestForBooking2.add(guest2);
+        System.out.println("Hostia: ");
+        guest1.viewGuest();
+        guest2.viewGuest();
+
+
 
 
 
@@ -35,22 +38,28 @@ public class Main {
         room1 = new Room(1,1,true,true,1000);
         room2 = new Room(2,1,true,true,1000);
         room3 = new Room(3,3,false,true,2400);
-       room1.viewRoom();
-      room2.viewRoom();
-      room3.viewRoom();
+        System.out.println("Hotelove pokoje: ");
+        room1.viewRoom();
+        room2.viewRoom();
+        room3.viewRoom();
 
 
 
 
         // 3.zadanie vytvorim rezervaciu
-        Booking booking1 = new Booking(guestForBooking2,room3,
+        Booking booking1 = new Booking(guest1,room3,
                 LocalDate.of(2021,7,19),
                 LocalDate.of(2021,7,26));
+
+        Booking booking2 = new Booking(guest1,guest2,room1,
+                LocalDate.of(2021,9,1),
+                LocalDate.of(2021,9,14));
 
 
         //4.zadanie zoznam rezervacii
         List<Booking> bookings = new ArrayList<>();
         bookings.add(booking1);
+        bookings.add(booking2);
 
         System.out.println("Seznam rezervací:");
         for (Booking booking : bookings) {

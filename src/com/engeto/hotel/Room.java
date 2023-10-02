@@ -6,7 +6,7 @@ public class Room {
     private boolean Balcony;
     private boolean SeaView;
     private double pricePerNight;
-    Room room;
+
 
 
     //region constructor
