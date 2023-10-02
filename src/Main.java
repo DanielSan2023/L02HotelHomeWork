@@ -1,6 +1,7 @@
 import com.engeto.hotel.Booking;
 import com.engeto.hotel.Guest;
 import com.engeto.hotel.Room;
+import com.engeto.hotel.VacationType;
 
 
 import java.time.LocalDate;
@@ -49,11 +50,11 @@ public class Main {
         // 3.zadanie vytvorim rezervaciu
         Booking booking1 = new Booking(guest1,room3,
                 LocalDate.of(2021,7,19),
-                LocalDate.of(2021,7,26));
+                LocalDate.of(2021,7,26), VacationType.REKREACNY);
 
         Booking booking2 = new Booking(guest1,guest2,room1,
                 LocalDate.of(2021,9,1),
-                LocalDate.of(2021,9,14));
+                LocalDate.of(2021,9,14),VacationType.FIREMNY);
 
 
         //4.zadanie zoznam rezervacii

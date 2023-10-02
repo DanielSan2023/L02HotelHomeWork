@@ -42,7 +42,7 @@ public class Guest  {
         return formattedDate;
     }
     public void viewGuest(){
-        System.out.println(getFirstName() +" "+getLastName()+" "
+        System.out.println(getFirstName() +" "+getLastName()+"  "
         +formatDate(getDateOfBirth()));
     }
 

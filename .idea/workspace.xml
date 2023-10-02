@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="077dca63-f85c-49a2-8965-3ccd40569993" name="Changes" comment="add booking">
+    <list default="true" id="077dca63-f85c-49a2-8965-3ccd40569993" name="Changes" comment="add reservation room">
+      <change afterPath="$PROJECT_DIR$/src/com/engeto/hotel/VacationType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/hotel/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/hotel/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -94,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696249504659</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add reservation room">
+      <created>1696274831766</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696274831766</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +136,7 @@
     <MESSAGE value="Create Rooms and check" />
     <MESSAGE value="Create Guest nad check" />
     <MESSAGE value="add booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="add booking" />
+    <MESSAGE value="add reservation room" />
+    <option name="LAST_COMMIT_MESSAGE" value="add reservation room" />
   </component>
 </project>
