@@ -15,19 +15,23 @@ public class Main {
 
     public static void main(String[] args) {
         List<Guest> guestForBooking2 = new ArrayList<>();
-        Room room1,room2,room3;
-
+        Room room1,room2,room3;  // 3 premenne typu Room
+        Guest guest1,guest2,guest3;   // 3 premenne typu Guest
 
    //1.zadanie vytvor hosti a vypis na obrazovku
-        Guest guest1 = new Guest("Adéla","Malíková",
+         guest1 = new Guest("Adéla","Malíková",
                 LocalDate.of(1993,03,13));
-        Guest guest2 = new Guest("Ján","Dvoráček",
+         guest2 = new Guest("Ján","Dvoráček",
                 LocalDate.of(1995,05,5));
+         guest3 = new Guest("Eugen","Ptáček",
+                LocalDate.of(1991,03,7));
         guestForBooking2.add(guest1);
         guestForBooking2.add(guest2);
+        guestForBooking2.add(guest3);
         System.out.println("Hostia: ");
-        guest1.viewGuest();
-        guest2.viewGuest();
+        guest1.getDescription();
+        guest2.getDescription();
+        guest3.getDescription();
 
 
 
@@ -56,11 +60,15 @@ public class Main {
                 LocalDate.of(2021,9,1),
                 LocalDate.of(2021,9,14),VacationType.FIREMNY);
 
+        Booking booking3 = new Booking(guest3,room2,VacationType.FIREMNY);
+        Booking booking4 = new Booking(guest3,room2);
 
         //4.zadanie zoznam rezervacii
         List<Booking> bookings = new ArrayList<>();
         bookings.add(booking1);
         bookings.add(booking2);
+        bookings.add(booking3);
+        bookings.add(booking4);
 
         System.out.println("Seznam rezervací:");
         for (Booking booking : bookings) {

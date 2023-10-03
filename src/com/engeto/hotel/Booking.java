@@ -11,13 +11,12 @@ public class Booking {
     private Room room;
     private LocalDate startDate;
     private LocalDate endDate;
-
     private VacationType typeOfVacation; //Enum>REKREACNY, FIREMNY,RODINNY,SLUZOBNY
 
 
 
 
-    //region constructor
+            //region constructor
 
 
     public Booking(Guest guest, Guest guest2, Guest guest3, Room room, LocalDate startDate, LocalDate endDate,VacationType typeOfVacation) {
@@ -47,24 +46,30 @@ public class Booking {
         this.typeOfVacation = typeOfVacation;
     }
 
-    public Booking(Guest guest, Room room) {
-        this(guest,room,LocalDate.now(),LocalDate.now().plusDays(6),VacationType.REKREACNY);
+    public Booking(Guest guest, Room room) {     //ak nezada datum automaticky dnesny + 6dni
+        this(guest,room,LocalDate.now(),LocalDate.now().plusDays(6),
+                VacationType.REKREACNY);
+    }
+
+    public Booking(Guest guest, Room room, VacationType typeOfVacation) {
+        this(guest,room,LocalDate.now(),LocalDate.now().plusDays(6),typeOfVacation);
+
     }
     //endregion
 
 
     @Override
-    public String toString() {
-        if(guest2==null && guest3==null)             // ak je len jeden host
-        {return "Pokoj cislo: "+room +"termín od :" +startDate + " do " +endDate
-                +". Host:" +guest + "druh pobytu: "+typeOfVacation;}
-        else if(guest3==null){return "Pokoj cislo: "+room +"termín od :" +startDate + " do " +endDate
+    public String toString() {  // kontrola poctu hosti
+        if(guest2==null && guest3==null)
+        {return "Pokoj cislo: "+room.getRoomNumber() +" termín od :" +startDate + " do " +endDate
+                +". Host: " +guest + "druh pobytu: "+typeOfVacation;}
+        else if(guest3==null){return "Pokoj cislo: "+room.getRoomNumber() +" termín od :" +startDate + " do " +endDate // 2hostia
                 +". Hostia:" +guest +" a "+guest2 + "druh pobytu: "+typeOfVacation;}
-        else return "Pokoj cislo: "+room +"termín od :" +startDate + " do " +endDate
-                    +". Hostia:"  +guest +" a "+guest2 +" a "+guest3 + "druh pobytu: "+typeOfVacation;
+        else return "Pokoj cislo: "+room.getRoomNumber() +" termín od :" +startDate + " do " +endDate
+                    +". Hostia:"  +guest +" a "+guest2 +" a "+guest3 + "druh pobytu: "+typeOfVacation; //3 hostia
     }
 
-
+            //region Get a Setter
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -104,4 +109,5 @@ public class Booking {
     public void setTypeOfVacation(VacationType typeOfVacation) {
         this.typeOfVacation = typeOfVacation;
     }
+    //endregion
 }

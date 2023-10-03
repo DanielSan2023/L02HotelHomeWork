@@ -41,17 +41,15 @@ public class Guest  {
         String formattedDate = dateOfBirth.format(formatter);
         return formattedDate;
     }
-    public void viewGuest(){
+    public void getDescription(){
         System.out.println(getFirstName() +" "+getLastName()+"  "
         +formatDate(getDateOfBirth()));
     }
 
     @Override
     public String toString() {
-        return "Guest{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                '}';
+        return
+                 firstName + "  " + lastName + " "
+                   +dateOfBirth+" "  ;
     }
 }
