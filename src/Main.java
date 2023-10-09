@@ -56,7 +56,11 @@ public class Main {
                 LocalDate.of(2021,7,19),
                 LocalDate.of(2021,7,26), VacationType.REKREACNY);
 
-        Booking booking2 = new Booking(guest1,guest2,room1,
+
+        // Rezervácia s ďalšími hosťami
+        List<Guest> otherGuests = new ArrayList<>();
+        otherGuests.add(guest2);
+        Booking booking2 = new Booking(guest1, otherGuests,room1,
                 LocalDate.of(2021,9,1),
                 LocalDate.of(2021,9,14),VacationType.FIREMNY);
 
@@ -70,6 +74,7 @@ public class Main {
         bookings.add(booking3);
         bookings.add(booking4);
 
+        //vypis seznam rezervaci
         System.out.println("Seznam rezervací:");
         for (Booking booking : bookings) {
             System.out.println(booking);
