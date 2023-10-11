@@ -50,3 +50,99 @@ Je rozlišen pracovní a rekreační pobyt?
 Volitelně si můžeš zkusit využít enum — ale ten jsme se zatím neučili.
 Volitelně můžeš zkusit zařídit, aby se při vytváření rezervace rezervovalo automaticky na rekreační pobyt od dneška na dalších 6 nocí, pokud nezadáš konkrétní data začátku a konce. (Pokud uvedeš všechny parametry rezervace, použijí se tak, jak jsou zadané.)
 Volitelné: Ve třídě Guest můžeš zkusit vytvořit metodu getDescription, která vrátí čitelný textový popis, zkombinovaný ze jména a data narození. Tím už nahlédneš do učiva třetí lekce.
+
+----------------------------Lekcia3HW-------------------
+
+TŘÍDA PRO EVIDENCI REZERVACÍ
+Motto
+Navážeš na řešení domácího úkolu Hotel z předchozích lekcí. Měl(a) bys už mít popsaná data, se kterými budeš pracovat. Můžeš tedy vytvářet objekty pro hosty, pokoje a rezervace v hotelu.
+
+Seznam rezervací
+Doplň do projektu Hotel třídu pro práci s objednávkami. Pojmenuj ji BookingManager. Jejím atributem bude seznam rezervací (List<Booking>).
+
+Přidej metody pro:
+
+Vložení rezervace do seznamu: addBooking(Booking newBooking).
+
+Získání rezervace se zadaným indexem ze seznamu: getBooking(index).
+
+Získání seznamu rezervací: getBookings().
+
+Vymazání seznamu rezervací: clearBookings().
+
+Pokud už obdobnou třídu v projektu máš, stačí ji přejmenovat a případně doplnit metody, které chybí. Můžeš využít refaktoring (Ctrl-F6 nebo pravé tlačítko myši → Refactor... → Rename.)
+
+SOUHRNNÉ INFORMACE
+Počet pracovních pobytů
+Ve třídě BookingManager připrav metodu getNumberOfWorkingBookings, která vrátí počet rezervací pro pracovní pobyty (ty, které mají v type of vacation pracovní pobyt).
+Průměrný počet hostů na rezervaci
+Ve třídě BookingManager připrav metodu getAverageGuests. Metoda projde všechny rezervace a vrátí jako výsledek průměrný počet hostů na rezervaci.
+TIP: Průměr spočítáš tak, že sečteš celkový počet hostů ve všech rezervacích a vydělíš je počtem rezervací. Může se ti tedy hodit do třídy Booking přidat metodu getNumberOfGuests, která vrátí počet hostů dané rezervace celkem — počítá se hlavní host i další hosté.
+
+TESTOVACÍ DATA
+Vytvoření testovacích dat
+Protože načítat data ze souboru se naučíme až v dalších lekcích, vytvoříme si zatím testovací data na začátku programu ručně. Ve třídě Main připrav metodu fillBookings s následujícím kódem:
+
+V praxi bychom tato data získali od uživatele, nebo je načetli ze vstupního souboru či z databáze.
+
+Vlož do evidence rezervací následující rezervace. Údaje, které chybí, si vymysli:
+
+Karel Dvořák, narozen 15. 5. 1990, si rezervuje pokoj číslo 3 od 1. 6. 2023 do 7. 6. 2023. Bude to pracovní pobyt.
+
+Jiný pan Karel Dvořák, narozen 3. 1. 1979, si rezervuje pokoj číslo 2 od 18. 7. 2023 do 21. 7. 2023. Bude to rekreační pobyt.
+
+Fyzioterapeutka Karolína Tmavá si pro své klienty rezervuje pokoj číslo 2 na dvoudenní pobyty v měsíci srpnu. Vytvoř 10 dvoudenních rezervací pro rekreační pobyty:
+
+První rezervace bude od 1. do 2. 8.,
+druhá od 3. do 4. 8.
+třetí od 5. do 6. 8.
+a tak dále. Poslední rezervace bude od 19. do 20. 6. Karolína bude uvedena jako jediný host.
+(Máš pravdu, v reálném hotelu by se to asi řešilo jinak. Ale chceme si vyzkoušet vytváření většího množství rezervací.)
+
+
+Fyzioterapeutka Karolína Tmavá z předchozího úkolu si dále rezervuje pokoj číslo 3 na celý srpen (od 1.8. do 31.8.).
+VÝPISY
+Výpis všech rezervací
+V hlavní třídě projektu připrav metodu pro výpis seznam všech rezervací ve formátu:
+datumOd až datumDo: jméno hlavního hosta (datum narození)[počet hostů, výhledNaMoře ano/ne] za cena
+Například:
+
+2023-06-01 až 2023-06-05: Alena Krásová (1993-05-18)[2, ano] za 4000 Kč
+Navíc: jestli chceš, zkus naformátovat datum do správného českého formátu 1. 6. 2023 místo běžného výpisu v Javě. Můžeš to provést ručně, nebo použít hotových metod v Javě.
+
+
+Prvních osm rekreačních rezervací
+Připrav metodu pro výpis prvních 8 rezervací, které jsou určeny pro rekreaci (typ pobytu je rekreační). Pracovní pobyty při výpisu ignoruj/přeskoč.
+Můžeš ji také zobecnit a počet vypisovaných rezervací zadat jako parametr metody.
+
+Statistika podle počtu hostů
+Připrav v hlavní třídě metodu printGuestStatistics, která vypíše:
+celkový počet rezervací s jedním hostem,
+celkový počet rezervací se dvěma hosty,
+a celkový počet rezervací s více než dvěma hosty.
+CENA REZERVACE
+Počet nocí na pobyt
+Do třídy Booking přidej metodu getBookingLength, která bude vracet počet nocí pro danou rezervaci. Zkus využít vyhledávač na internetu a najít vhodný způsob. V Javě je vše připraveno, stačí využít hotová řešení.
+V praxi také velmi často musíš sám/sama dohledat již existující metody. Pokud si nebudeš vědět rady, máš tu i nápovědu.
+
+
+Cena rezervace
+Přidej do třídy Booking metodu getPrice, která spočítá celkovou cenu objednávky. Znáš cenu pokoje na jednu noc a znáš datum začátku a konce rezervace. Počet nocí už také umíš zjistit. Snadno tedy spočítáš cenu pobytu/rezervace.
+SOUHRN
+Hlavní kód aplikace
+Do metody main přidej volání všech metod, které jsi v tomto úkolu vytvořil(a). Vypiš na obrazovku jejich výsledky s odpovídajícím popisem. (Například: Celkový počet rezervací je 28.) Ověř, že metody vypisují správné výsledky.
+Kam umístit metodu a jak ji pojmenovat?
+Věnuj chvilku tomu, že se zamyslíš nad umístěním a názvy metod, které jsme zapsali.
+
+Volba názvu:
+
+Vytvářeli jsme metody print..., které provedou výpis na obrazovku. Jejich nevýhodou je, že jsou vázány právě jen na výpis do příkazového řádku. Pokud bychom stejný výpis chtěli umístit například do textového pole mobilní aplikace, museli bychom si napsat novou metodu.
+
+Dále jsme vytvářeli metody get..., které vrací hodnoty. Pokud jejich výsledek chceme sdělit uživateli, musíme v kódu metody main provést výpis. Ale jsou obecnější, protože jejich výsledek nemusíme jen vypisovat na obrazovku, můžeme ho uložit do souboru, nebo dále zpracovávat.
+
+Volba umístění:
+
+metodu umístíme do třídy Booking či BookingManager, bude dostupná kdykoli, kdy budeme pracovat s danou třídou. Tento postup je vhodný pro metody, jejichž efekty a výsledky se mohou použít i v dalších třídách aplikacích.
+
+metodu umístíme to hlavní třídy aplikace. Pak ji nebudeme moci používat jinde. Hodí se pro metody, které jsou specifické pro konkrétní aplikaci a které bychom nejspíš jinde nevyužili. (Například konkrétně formátovaný výpisy apod.)
+

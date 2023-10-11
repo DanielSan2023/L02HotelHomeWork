@@ -1,7 +1,4 @@
-import com.engeto.hotel.Booking;
-import com.engeto.hotel.Guest;
-import com.engeto.hotel.Room;
-import com.engeto.hotel.VacationType;
+import com.engeto.hotel.*;
 
 
 import java.time.LocalDate;
@@ -79,6 +76,9 @@ public class Main {
         for (Booking booking : bookings) {
             System.out.println(booking);
 
+
+            BookingManager newBooking = new BookingManager();
+            newBooking.addBooking(booking1);
 
     }
 }}
