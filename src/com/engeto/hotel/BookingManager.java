@@ -1,18 +1,23 @@
 package com.engeto.hotel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingManager {
 
-    List<Booking> bookingList;
+    List<Booking> bookingList = new ArrayList<>();
 
 
 
         // prida rezervaciu do bookingListu
     public  void addBooking(Booking newBooking){
-    bookingList.add(newBooking);
+
+        bookingList.add(newBooking);
     }
 
+    public  void addBookingList(List<Booking> bookingList){
+      this.bookingList.addAll(bookingList);
+    }
             // vrati rezervaciu podla indexu
     public Booking getBooking(int index){
         if (index >= 0 && index < bookingList.size())
@@ -32,6 +37,14 @@ public class BookingManager {
         bookingList.clear();
     }
 
+
+    public int getNumberOfWorkingBookings(){
+        int count = 0;
+        for (Booking booking : bookingList) {
+           if(booking.getTypeOfVacation()==VacationType.PRACOVNY) {count++;}
+        }
+        return count;
+    }
 
 
 

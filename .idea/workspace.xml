@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="077dca63-f85c-49a2-8965-3ccd40569993" name="Changes" comment="HomeWork repair add List&lt;Guests&gt; otherGuests to class |Booking">
-      <change afterPath="$PROJECT_DIR$/src/com/engeto/hotel/BookingManager.java" afterDir="false" />
+    <list default="true" id="077dca63-f85c-49a2-8965-3ccd40569993" name="Changes" comment="add new Branch Lekcia3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readmy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readmy.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/AllReservation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/hotel/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/BookingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/hotel/BookingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/VacationType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/hotel/VacationType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696851014517</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add new Branch Lekcia3">
+      <created>1697048513943</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697048513943</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,7 +156,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="lekcia3" />
+                        <option value="origin/lekcia3" />
                       </list>
                     </value>
                   </entry>
@@ -185,6 +192,37 @@
     <MESSAGE value="add ENUM VacationType" />
     <MESSAGE value="HomeWork done" />
     <MESSAGE value="HomeWork repair add List&lt;Guests&gt; otherGuests to class |Booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="HomeWork repair add List&lt;Guests&gt; otherGuests to class |Booking" />
+    <MESSAGE value="add new Branch Lekcia3" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new Branch Lekcia3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/engeto/hotel/Booking.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/engeto/hotel/Booking.java</url>
+          <line>129</line>
+          <properties class="com.engeto.hotel.Booking" method="getNumberOfGuests">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

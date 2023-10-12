@@ -5,17 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Booking {
-    private Guest mainGuest,guest2,guest3;
+    private Guest mainGuest;
     private List<Guest> otherGuests;
     private Room room;
     private LocalDate startDate;
     private LocalDate endDate;
     private VacationType typeOfVacation; //Enum>REKREACNY, FIREMNY,RODINNY,SLUZOBNY
+    List<Booking> bookingAll = new ArrayList<>();
 
 
 
 
-            //region constructor
+            //region constructors
+
+
 
 
     public Booking(Guest mainGuest, List<Guest> otherGuests, Room room, LocalDate startDate, LocalDate endDate, VacationType typeOfVacation) {
@@ -45,7 +48,11 @@ public class Booking {
         this(mainGuest,room,LocalDate.now(),LocalDate.now().plusDays(6),typeOfVacation);
 
     }
-    //endregion
+
+    public Booking() {
+
+    }
+    //endregions
 
 
 
@@ -110,4 +117,26 @@ public class Booking {
     public void setOtherGuests(List<Guest> otherGuests) {
         this.otherGuests = otherGuests;
     }
+
+
+    public  void addBookingAllList(List<Booking> bookingList){
+
+        this.bookingAll.addAll(bookingList);
+    }
+
+
+
+
+    public int getNumberOfGuests() {
+        int guestCount = 0;
+        for (Booking booking : bookingAll) {
+            if (booking.getMainGuest() != null) {
+                guestCount++; // Pridajte hlavného hosťa z každej rezervácie
+            }
+            if (booking.getOtherGuests() != null) {
+                guestCount += booking.getOtherGuests().size(); // Pridajte počet ďalších hostí z každej rezervácie
+            }
+        }     return guestCount;
+    }
+
 }

@@ -4,7 +4,8 @@ public enum VacationType {   // |ENUM pre druh pobytu
     REKREACNY,
     FIREMNY,
     RODINNY,
-    SLUZOBNY
+    SLUZOBNY,
+    PRACOVNY
 
 
 
