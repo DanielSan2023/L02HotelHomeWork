@@ -127,8 +127,8 @@ public class Booking {
 
 
 
-    public int getNumberOfGuests() {
-        int guestCount = 0;
+    public int  getNumberOfGuests() {
+        int guestCount=0;
         for (Booking booking : bookingAll) {
             if (booking.getMainGuest() != null) {
                 guestCount++; // Pridajte hlavného hosťa z každej rezervácie

@@ -27,15 +27,11 @@ public class Main {
         guestForBooking2.add(guest1);
         guestForBooking2.add(guest2);
         guestForBooking2.add(guest3);
+
         System.out.println("Hostia: ");
         guest1.getDescription();
         guest2.getDescription();
         guest3.getDescription();
-
-
-
-
-
 
 
     // 2.zadanie  vytvor izby a vypis na obrazovku
@@ -47,27 +43,28 @@ public class Main {
         room2.viewRoom();
         room3.viewRoom();
 
-
+        // Rezervácia s ďalšími hosťami
+        List<Guest> otherGuests = new ArrayList<>();
+        otherGuests.add(guest2);
+        otherGuests.add(guest3);
 
 
         // 3.zadanie vytvorim rezervaciu
         Booking booking1 = new Booking(guest1,room3,
                 LocalDate.of(2021,7,19),
                 LocalDate.of(2021,7,26), VacationType.REKREACNY);
-
-
-        // Rezervácia s ďalšími hosťami
-        List<Guest> otherGuests = new ArrayList<>();
-        otherGuests.add(guest2);
         Booking booking2 = new Booking(guest1, otherGuests,room1,
                 LocalDate.of(2021,9,1),
                 LocalDate.of(2021,9,14),VacationType.FIREMNY);
-
         Booking booking3 = new Booking(guest3,room2,VacationType.FIREMNY);
-        Booking booking4 = new Booking(guest3,room2,VacationType.PRACOVNY);
+        Booking booking4 = new Booking(guest2,room2,VacationType.PRACOVNY);
+
         Booking booking5 = new Booking(guest1, otherGuests,room1,
                 LocalDate.of(2021,9,1),
                 LocalDate.of(2021,9,14),VacationType.FIREMNY);
+        Booking booking6 = new Booking(guest1, otherGuests,room1,
+                LocalDate.of(2021,9,1),
+                LocalDate.of(2021,9,14),VacationType.PRACOVNY);
 
         //4.zadanie zoznam rezervacii
         List<Booking> bookings = new ArrayList<>();
@@ -76,8 +73,9 @@ public class Main {
         bookings.add(booking3);
         bookings.add(booking4);
         bookings.add(booking5);
+        bookings.add(booking6);
 
-        //vypis seznam rezervaci
+       //   vypis seznam rezervaci
         System.out.println("Seznam rezervací:");
         for (Booking booking : bookings) {
             System.out.println(booking);
@@ -86,18 +84,20 @@ public class Main {
 
 
 
+            //----------------------Lekcie 3 HomeWork-----------------------------//
+            System.out.println("-------Lekcie 3 HomeWork---------------");
             BookingManager newBooking = new BookingManager();
-//            newBooking.addBooking(booking1);
-//            newBooking.addBooking(booking4);
-            System.out.println("----------------------");
+
             newBooking.addBookingList(bookings);
              System.out.println( "Pracovny pobyt : "+newBooking.getNumberOfWorkingBookings());
 
 
         Booking bookingAllList = new Booking();
-        bookingAllList.addBookingAllList(bookings);// posielam vsetky rezervacie do bookingAll
-
+        // posielam vsetky rezervacie do bookingAll
+        bookingAllList.addBookingAllList(bookings);
         System.out.println("Pocet vsetkych hosti: "+ bookingAllList.getNumberOfGuests());
+        System.out.println("Pocet vsetkych rezervacii:"+newBooking.getNumberOfRezervations());
+        System.out.println("Priemerny pocet hosti na rezervaciu: " +newBooking.getAverageGuests(bookingAllList.getNumberOfGuests()));
 
 
     }

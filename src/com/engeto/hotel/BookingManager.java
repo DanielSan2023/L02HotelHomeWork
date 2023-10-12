@@ -1,10 +1,12 @@
 package com.engeto.hotel;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookingManager {
-
+    Booking booking = new Booking();
     List<Booking> bookingList = new ArrayList<>();
 
 
@@ -29,7 +31,10 @@ public class BookingManager {
 
     //vrati seznam  bookingList rezervacii
     public List<Booking> getBookings(){
-     return   bookingList;
+        return   bookingList;
+    }
+    public int  getNumberOfRezervations(){
+        return   bookingList.size();
     }
 
         //remove bookingList -- clear all reservation
@@ -44,6 +49,19 @@ public class BookingManager {
            if(booking.getTypeOfVacation()==VacationType.PRACOVNY) {count++;}
         }
         return count;
+    }
+
+    public BigDecimal getAverageGuests(int numberOfGuest){
+
+
+        if (bookingList.size() > 0) {
+            BigDecimal averageGuests = BigDecimal.valueOf(numberOfGuest)
+                    .divide(BigDecimal.valueOf(bookingList.size()),
+                            2, RoundingMode.HALF_UP);
+            return averageGuests;
+        } else {
+            return BigDecimal.ZERO;
+        }
     }
 
 
