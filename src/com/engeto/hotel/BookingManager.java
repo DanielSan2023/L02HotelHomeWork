@@ -16,10 +16,13 @@ public class BookingManager {
 
         bookingList.add(newBooking);
     }
-
+    // addBookingList je metoda,ktora prijme  zoznam bookings a ulozi do bookingList-u v tejto triede.
     public  void addBookingList(List<Booking> bookingList){
-      this.bookingList.addAll(bookingList);
+
+        this.bookingList.addAll(bookingList);
     }
+
+
             // vrati rezervaciu podla indexu
     public Booking getBooking(int index){
         if (index >= 0 && index < bookingList.size())
@@ -63,7 +66,6 @@ public class BookingManager {
             return BigDecimal.ZERO;
         }
     }
-
 
 
 }

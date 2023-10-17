@@ -16,12 +16,15 @@ public class Booking {
 
 
 
+
+
             //region constructors
 
 
 
 
-    public Booking(Guest mainGuest, List<Guest> otherGuests, Room room, LocalDate startDate, LocalDate endDate, VacationType typeOfVacation) {
+    public Booking(Guest mainGuest, List<Guest> otherGuests, Room room,
+                   LocalDate startDate, LocalDate endDate, VacationType typeOfVacation) {
         this.mainGuest = mainGuest;
         this.room = room;
         this.startDate = startDate;
@@ -60,9 +63,9 @@ public class Booking {
     @Override
     public String toString() {
         if(otherGuests.isEmpty())
-        return "Pokoj cislo: "+room.getRoomNumber() +" termín od :" +startDate + " do " +endDate
+        return  "Pokoj cislo: "+room.getRoomNumber() +" termín od: " +startDate + " do " +endDate
                 +". HlavnyHost: " + mainGuest +"druh pobytu: "+typeOfVacation;
-        else return  "Pokoj cislo: "+room.getRoomNumber() +" termín od :" +startDate + " do " +endDate
+        else return  "Pokoj cislo: "+room.getRoomNumber() +" termín od: " +startDate + " do " +endDate
                 +". HlavnyHost: " + mainGuest + ", otherGuests=" + otherGuests+"druh pobytu: "+typeOfVacation;
     }
 
@@ -138,5 +141,9 @@ public class Booking {
             }
         }     return guestCount;
     }
+
+
+
+
 
 }

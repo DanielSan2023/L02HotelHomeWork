@@ -12,18 +12,17 @@ public class Main {
 
     public static void main(String[] args) {
         List<Guest> guestForBooking2 = new ArrayList<>();
-        Room room1,room2,room3;  // 3 premenne typu Room
-        Guest guest1,guest2,guest3;   // 3 premenne typu Guest
+        Room room1, room2, room3;  // 3 premenne typu Room
+        Guest guest1, guest2, guest3;   // 3 premenne typu Guest
 
 
-
-   //1.zadanie vytvor hosti a vypis na obrazovku
-         guest1 = new Guest("Adéla","Malíková",
-                LocalDate.of(1993,03,13));
-         guest2 = new Guest("Ján","Dvoráček",
-                LocalDate.of(1995,05,5));
-         guest3 = new Guest("Eugen","Ptáček",
-                LocalDate.of(1991,03,7));
+        //1.zadanie vytvor hosti a vypis na obrazovku
+        guest1 = new Guest("Adéla", "Malíková",
+                LocalDate.of(1993, 03, 13));
+        guest2 = new Guest("Ján", "Dvoráček",
+                LocalDate.of(1995, 05, 5));
+        guest3 = new Guest("Eugen", "Ptáček",
+                LocalDate.of(1991, 03, 7));
         guestForBooking2.add(guest1);
         guestForBooking2.add(guest2);
         guestForBooking2.add(guest3);
@@ -34,10 +33,10 @@ public class Main {
         guest3.getDescription();
 
 
-    // 2.zadanie  vytvor izby a vypis na obrazovku
-        room1 = new Room(1,1,true,true,1000);
-        room2 = new Room(2,1,true,true,1000);
-        room3 = new Room(3,3,false,true,2400);
+        // 2.zadanie  vytvor izby a vypis na obrazovku
+        room1 = new Room(1, 1, true, true, 1000);
+        room2 = new Room(2, 1, true, true, 1000);
+        room3 = new Room(3, 3, false, true, 2400);
         System.out.println("Hotelove pokoje: ");
         room1.viewRoom();
         room2.viewRoom();
@@ -50,21 +49,20 @@ public class Main {
 
 
         // 3.zadanie vytvorim rezervaciu
-        Booking booking1 = new Booking(guest1,room3,
-                LocalDate.of(2021,7,19),
-                LocalDate.of(2021,7,26), VacationType.REKREACNY);
-        Booking booking2 = new Booking(guest1, otherGuests,room1,
-                LocalDate.of(2021,9,1),
-                LocalDate.of(2021,9,14),VacationType.FIREMNY);
-        Booking booking3 = new Booking(guest3,room2,VacationType.FIREMNY);
-        Booking booking4 = new Booking(guest2,room2,VacationType.PRACOVNY);
-
-        Booking booking5 = new Booking(guest1, otherGuests,room1,
-                LocalDate.of(2021,9,1),
-                LocalDate.of(2021,9,14),VacationType.FIREMNY);
-        Booking booking6 = new Booking(guest1, otherGuests,room1,
-                LocalDate.of(2021,9,1),
-                LocalDate.of(2021,9,14),VacationType.PRACOVNY);
+        Booking booking1 = new Booking(guest1, room3,
+                LocalDate.of(2021, 7, 19),
+                LocalDate.of(2021, 7, 26), VacationType.REKREACNY);
+        Booking booking2 = new Booking(guest1, otherGuests, room1,
+                LocalDate.of(2021, 9, 1),
+                LocalDate.of(2021, 7, 14), VacationType.FIREMNY);
+        Booking booking3 = new Booking(guest3, room3, VacationType.FIREMNY);
+        Booking booking4 = new Booking(guest2, room2, VacationType.PRACOVNY);
+        Booking booking5 = new Booking(guest1, otherGuests, room1,
+                LocalDate.of(2021, 9, 1),
+                LocalDate.of(2021, 5, 14), VacationType.FIREMNY);
+        Booking booking6 = new Booking(guest1, otherGuests, room1,
+                LocalDate.of(2021, 6, 1),
+                LocalDate.of(2021, 7, 14), VacationType.PRACOVNY);
 
         //4.zadanie zoznam rezervacii
         List<Booking> bookings = new ArrayList<>();
@@ -75,30 +73,80 @@ public class Main {
         bookings.add(booking5);
         bookings.add(booking6);
 
-       //   vypis seznam rezervaci
+        //   vypis seznam rezervaci
         System.out.println("Seznam rezervací:");
         for (Booking booking : bookings) {
+            System.out.println(booking);
+        }
+
+        //----------------------Lekcie 3 HomeWork-----------------------------//
+        System.out.println("-------Lekcie 3 HomeWork---------------");
+        BookingManager newBooking = new BookingManager();
+        newBooking.addBookingList(bookings); // pridal som vsetky rezervacie do triedy BookingManager
+        int indexListuBooking = 1;
+        System.out.println("Vypise rezervaciu podla indexu: (" + indexListuBooking + ") --> " + newBooking.getBooking(0));
+        System.out.println("Vypise vsetky rezervacie z BookingManagera :");
+        for (Booking booking : newBooking.getBookings()) {
+            System.out.println(booking.toString());
+        }
+
+        //----------------------Počet pracovních pobytů-------------------------------//
+        System.out.println("Počet pracovných pobytov : " + newBooking.getNumberOfWorkingBookings());
+
+        //--------------------  Průměrný počet hostů na rezervaci   ---------------------//
+        Booking bookingAllList = new Booking();
+        // posielam vsetky rezervacie do bookingAll
+        bookingAllList.addBookingAllList(bookings);
+        System.out.println("Pocet vsetkych hosti: " + bookingAllList.getNumberOfGuests());
+        System.out.println("Pocet vsetkych rezervacii:" + newBooking.getNumberOfRezervations());
+        System.out.println("Priemerny pocet hosti na rezervaciu: " + newBooking.getAverageGuests(bookingAllList.getNumberOfGuests()));
+
+        //-------------------Vytvoření testovacích dat----------------------------------//
+        List<Booking> bookingsForTest = new ArrayList<>();
+
+        bookingsForTest.add(new Booking(new Guest("Karel"," Dvorak" ,
+                LocalDate.of(1990, 05, 15)),room3,
+                LocalDate.of(2023, 6, 1),
+                LocalDate.of(2023, 6, 7),VacationType.PRACOVNY));
+        bookingsForTest.add(new Booking(new Guest("Karel"," Dvorak" ,
+                LocalDate.of(1979, 05, 15)),room2,
+                LocalDate.of(2023, 7, 18),
+                LocalDate.of(2023, 7, 21),VacationType.REKREACNY));
+
+
+        Guest karolina = new Guest("Karolína", "Tmavá",
+                       LocalDate.of(1990, 1, 1));
+        LocalDate startDate = LocalDate.of(2023, 8, 1);
+        LocalDate endDate = LocalDate.of(2023, 8, 2);
+        for (int i = 0; i < 10; i++) {
+               Booking karolinaBooking = new Booking(karolina, room2, startDate, endDate, VacationType.REKREACNY);
+               bookingsForTest.add(karolinaBooking);
+               // posunie datum oi 2 dni dopredu
+            startDate = startDate.plusDays(2);
+            endDate = endDate.plusDays(2);
+        }
+            // pomocou metody posle  rezervacie do bookingListu
+        fillBookings(newBooking,bookingsForTest);
+
+
+        // vypise zoznam rezervacii z BookingManagera
+        List<Booking> allBookings = newBooking.getBookings();
+        for (Booking booking : allBookings) {
             System.out.println(booking);
         }
 
 
 
 
-            //----------------------Lekcie 3 HomeWork-----------------------------//
-            System.out.println("-------Lekcie 3 HomeWork---------------");
-            BookingManager newBooking = new BookingManager();
-
-            newBooking.addBookingList(bookings);
-             System.out.println( "Pracovny pobyt : "+newBooking.getNumberOfWorkingBookings());
-
-
-        Booking bookingAllList = new Booking();
-        // posielam vsetky rezervacie do bookingAll
-        bookingAllList.addBookingAllList(bookings);
-        System.out.println("Pocet vsetkych hosti: "+ bookingAllList.getNumberOfGuests());
-        System.out.println("Pocet vsetkych rezervacii:"+newBooking.getNumberOfRezervations());
-        System.out.println("Priemerny pocet hosti na rezervaciu: " +newBooking.getAverageGuests(bookingAllList.getNumberOfGuests()));
-
-
     }
+        public static  void fillBookings(BookingManager bookingManager, List<Booking> bookings){
+        bookingManager.addBookingList(bookings);
+
+
+        }
+
+
+
+
+
 }
