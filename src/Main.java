@@ -119,7 +119,7 @@ public class Main {
                 LocalDate.of(2023, 7, 18),
                 LocalDate.of(2023, 7, 21),VacationType.REKREACNY));
 
-        // Karolina  si rezervuje
+        // Karolina  si rezervuje 10 dvou dennzych rezervacii
         Guest karolina = new Guest("Karolína", "Tmavá",
                        LocalDate.of(1990, 1, 1));
         LocalDate startDate = LocalDate.of(2023, 8, 1);
@@ -139,18 +139,30 @@ public class Main {
             // pomocou metody posle  rezervacie do bookingListu
         fillBookings(newBooking,bookingsForTest);
 
-
+        // Výpis všech rezervací
         // vypise zoznam rezervacii z BookingManagera
         List<Booking> allBookings = newBooking.getBookings();
         printBookings(allBookings);
         // vypise prvych limit=8 rezervacii Typu ? REKREACNY
 
         printRekreacnyTypOfRezervation(8,allBookings);
+        printGuestStatistics(allBookings);
 
 
+    }
 
-
-
+    private static void printGuestStatistics(List<Booking> allBookings) {
+        int pocetRez1Host=0;
+        int pocetRez2Host=0;
+        int pocetRezViacHost=0;
+        for (Booking booking : allBookings) {
+            if(booking.getNumberOfGuestsOfOneRezervation()==1){ pocetRez1Host++;}
+            if(booking.getNumberOfGuestsOfOneRezervation()==2){ pocetRez2Host++;}
+            if(booking.getNumberOfGuestsOfOneRezervation()>2){ pocetRezViacHost++;}
+            }
+        System.out.println("Celkovy pocet rezervacii  s jednym hostom je : "+pocetRez1Host);
+        System.out.println("Celkovy pocet rezervacii  s dvoma hostmy je : "+pocetRez2Host);
+        System.out.println("Celkovy pocet rezervacii  s viac ako dva hostmy je : "+pocetRezViacHost);
     }
 
     private static  void fillBookings(BookingManager bookingManager, List<Booking> bookings){
@@ -173,7 +185,7 @@ public class Main {
 
 
     private static void printRekreacnyTypOfRezervation(int limit,List<Booking> allBookings) {
-        System.out.println("Pocet prvých  " +prevodNaSlova(limit) +" rekreacných rezervacii:");
+        System.out.println("Vupis prvých  " +prevodNaSlova(limit) +" rekreacných rezervacii:");
         int pocetRekreacnychRezervacii = 0;
         for (Booking booking : allBookings) {
             if(booking.getTypeOfVacation()==VacationType.REKREACNY && pocetRekreacnychRezervacii<limit){

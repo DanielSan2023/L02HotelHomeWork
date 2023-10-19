@@ -133,7 +133,7 @@ public class Booking {
 
 
 
-    public int  getNumberOfGuests() {
+    public int  getNumberOfGuests() { // vrati pocet hosti zo vsetkych rezervacii
         int guestCount=0;
         for (Booking booking : bookingAll) {
             if (booking.getMainGuest() != null) {
@@ -145,7 +145,7 @@ public class Booking {
         }     return guestCount;
     }
 
-    public int getNumberOfGuestsOfOneRezervation() {
+    public int getNumberOfGuestsOfOneRezervation() {   // vrati pocet hosti na konkretnu reyervaciu
         int guestCount = 0;
         if (mainGuest != null) {
             guestCount++; // Přidejte hlavního hosta z této rezervace
