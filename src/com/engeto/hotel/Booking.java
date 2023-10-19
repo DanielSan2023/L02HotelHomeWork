@@ -6,11 +6,12 @@ import java.util.List;
 
 public class Booking {
     private Guest mainGuest;
-    private List<Guest> otherGuests;
+
     private Room room;
     private LocalDate startDate;
     private LocalDate endDate;
     private VacationType typeOfVacation; //Enum>REKREACNY, FIREMNY,RODINNY,SLUZOBNY
+    private List<Guest> otherGuests;
     List<Booking> bookingAll = new ArrayList<>();
 
 
@@ -33,7 +34,8 @@ public class Booking {
         this.otherGuests = otherGuests; // Nastavíme zoznam ďalších hostí podľa zadaného zoznamu
         }
 
-    public Booking(Guest mainGuest, Room room, LocalDate startDate, LocalDate endDate, VacationType typeOfVacation) {
+    public Booking(Guest mainGuest, Room room, LocalDate startDate, LocalDate endDate,
+                   VacationType typeOfVacation) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.room = room;
@@ -48,7 +50,8 @@ public class Booking {
     }
 
     public Booking(Guest mainGuest, Room room, VacationType typeOfVacation) {
-        this(mainGuest,room,LocalDate.now(),LocalDate.now().plusDays(6),typeOfVacation);
+        this(mainGuest,room,LocalDate.now(),LocalDate.now().plusDays(6),
+                typeOfVacation);
 
     }
 
@@ -142,6 +145,16 @@ public class Booking {
         }     return guestCount;
     }
 
+    public int getNumberOfGuestsOfOneRezervation() {
+        int guestCount = 0;
+        if (mainGuest != null) {
+            guestCount++; // Přidejte hlavního hosta z této rezervace
+        }
+        if (otherGuests != null) {
+            guestCount += otherGuests.size(); // Přidejte počet dalších hostů z této rezervace
+        }
+        return guestCount;
+    }
 
 
 

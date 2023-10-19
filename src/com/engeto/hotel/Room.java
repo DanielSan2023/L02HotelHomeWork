@@ -45,6 +45,14 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
+    public double getPricePerNight() {
+        return pricePerNight;
+    }
+
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
     @Override
     public String toString() {
         return "Room{" +

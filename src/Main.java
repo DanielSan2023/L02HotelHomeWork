@@ -2,6 +2,7 @@ import com.engeto.hotel.*;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class Main {
 
         // 2.zadanie  vytvor izby a vypis na obrazovku
         room1 = new Room(1, 1, true, true, 1000);
-        room2 = new Room(2, 1, true, true, 1000);
+        room2 = new Room(2, 1, true, false, 1000);
         room3 = new Room(3, 3, false, true, 2400);
         System.out.println("Hotelove pokoje: ");
         room1.viewRoom();
@@ -46,6 +47,11 @@ public class Main {
         List<Guest> otherGuests = new ArrayList<>();
         otherGuests.add(guest2);
         otherGuests.add(guest3);
+        List<Guest> otherGuests2 = new ArrayList<>();
+        otherGuests2.add(guest3);
+        List<Guest> otherGuests3 = new ArrayList<>();
+        otherGuests3.add(guest2);
+
 
 
         // 3.zadanie vytvorim rezervaciu
@@ -57,10 +63,10 @@ public class Main {
                 LocalDate.of(2021, 7, 14), VacationType.FIREMNY);
         Booking booking3 = new Booking(guest3, room3, VacationType.FIREMNY);
         Booking booking4 = new Booking(guest2, room2, VacationType.PRACOVNY);
-        Booking booking5 = new Booking(guest1, otherGuests, room1,
+        Booking booking5 = new Booking(guest1, otherGuests2, room1,
                 LocalDate.of(2021, 9, 1),
                 LocalDate.of(2021, 5, 14), VacationType.FIREMNY);
-        Booking booking6 = new Booking(guest1, otherGuests, room1,
+        Booking booking6 = new Booking(guest1, otherGuests3, room2,
                 LocalDate.of(2021, 6, 1),
                 LocalDate.of(2021, 7, 14), VacationType.PRACOVNY);
 
@@ -113,7 +119,7 @@ public class Main {
                 LocalDate.of(2023, 7, 18),
                 LocalDate.of(2023, 7, 21),VacationType.REKREACNY));
 
-
+        // Karolina  si rezervuje
         Guest karolina = new Guest("Karolína", "Tmavá",
                        LocalDate.of(1990, 1, 1));
         LocalDate startDate = LocalDate.of(2023, 8, 1);
@@ -121,32 +127,84 @@ public class Main {
         for (int i = 0; i < 10; i++) {
                Booking karolinaBooking = new Booking(karolina, room2, startDate, endDate, VacationType.REKREACNY);
                bookingsForTest.add(karolinaBooking);
-               // posunie datum oi 2 dni dopredu
+               // posunie datum o 2 dni dopredu
             startDate = startDate.plusDays(2);
             endDate = endDate.plusDays(2);
         }
+
+        Booking karolinaBooking = new Booking(karolina, room3,
+                LocalDate.of(2023, 8, 1),
+                LocalDate.of(2023, 8, 31), VacationType.REKREACNY);
+        bookingsForTest.add(karolinaBooking);
             // pomocou metody posle  rezervacie do bookingListu
         fillBookings(newBooking,bookingsForTest);
 
 
         // vypise zoznam rezervacii z BookingManagera
         List<Booking> allBookings = newBooking.getBookings();
-        for (Booking booking : allBookings) {
-            System.out.println(booking);
-        }
+        printBookings(allBookings);
+        // vypise prvych limit=8 rezervacii Typu ? REKREACNY
+
+        printRekreacnyTypOfRezervation(8,allBookings);
+
 
 
 
 
     }
-        public static  void fillBookings(BookingManager bookingManager, List<Booking> bookings){
+
+    private static  void fillBookings(BookingManager bookingManager, List<Booking> bookings){
         bookingManager.addBookingList(bookings);
 
+    }
 
+    private static void printBookings(List<Booking> allBookings) {
+        System.out.println("Zoznam vsetkych rezervacii: ");
+        System.out.println("      Od             do              Meno hosťa  Narodený/á[hostí,výh.more] cena ");
+        DateTimeFormatter formatterCZ = DateTimeFormatter.ofPattern("d. M. yyyy");
+        for (Booking booking : allBookings) {
+            String seaView = booking.getRoom().isSeaView() ? "ano" : "nie";
+            System.out.println(booking.getStartDate().format(formatterCZ) +"     "
+                    + booking.getEndDate().format(formatterCZ) +"       "+ booking.getMainGuest()
+                    +"[" +booking.getNumberOfGuestsOfOneRezervation()+","+ seaView+" ]"+"    "
+                    +booking.getRoom().getPricePerNight());
+        }
+    }
+
+
+    private static void printRekreacnyTypOfRezervation(int limit,List<Booking> allBookings) {
+        System.out.println("Pocet prvých  " +prevodNaSlova(limit) +" rekreacných rezervacii:");
+        int pocetRekreacnychRezervacii = 0;
+        for (Booking booking : allBookings) {
+            if(booking.getTypeOfVacation()==VacationType.REKREACNY && pocetRekreacnychRezervacii<limit){
+                pocetRekreacnychRezervacii++;
+                System.out.println(booking.getMainGuest()+"    "+booking.getTypeOfVacation());
+            }
         }
 
+    }
 
-
-
-
+    private static String prevodNaSlova(int number) {
+        String slovo;
+        switch (number) {
+            case 0: slovo = "nula";   break;
+            case 1:slovo = "jedna";break;
+            case 2:slovo = "dvě"; break;
+            case 3:slovo = "tři";break;
+            case 4:slovo = "čtyři";break;
+            case 5:slovo = "pět";break;
+            case 6:slovo = "šest";break;
+            case 7:slovo = "sedm"; break;
+            case 8:slovo = "osm";break;
+            case 9:slovo = "devět";break;
+            case 10:slovo = "deset";break;
+            default:slovo = "Nepodporované číslo";
+        }
+        return slovo;
+    }
 }
+
+
+
+
+
