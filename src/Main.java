@@ -59,13 +59,13 @@ public class Main {
                 LocalDate.of(2021, 7, 19),
                 LocalDate.of(2021, 7, 26), VacationType.REKREACNY);
         Booking booking2 = new Booking(guest1, otherGuests, room1,
-                LocalDate.of(2021, 9, 1),
-                LocalDate.of(2021, 7, 14), VacationType.FIREMNY);
+                LocalDate.of(2021, 7, 14),
+                LocalDate.of(2021, 9, 1), VacationType.FIREMNY);
         Booking booking3 = new Booking(guest3, room3, VacationType.FIREMNY);
         Booking booking4 = new Booking(guest2, room2, VacationType.PRACOVNY);
         Booking booking5 = new Booking(guest1, otherGuests2, room1,
-                LocalDate.of(2021, 9, 1),
-                LocalDate.of(2021, 5, 14), VacationType.FIREMNY);
+                LocalDate.of(2021, 5, 1),
+                LocalDate.of(2021, 9, 14), VacationType.FIREMNY);
         Booking booking6 = new Booking(guest1, otherGuests3, room2,
                 LocalDate.of(2021, 6, 1),
                 LocalDate.of(2021, 7, 14), VacationType.PRACOVNY);
@@ -139,14 +139,21 @@ public class Main {
             // pomocou metody posle  rezervacie do bookingListu
         fillBookings(newBooking,bookingsForTest);
 
-        // Výpis všech rezervací
+
         // vypise zoznam rezervacii z BookingManagera
         List<Booking> allBookings = newBooking.getBookings();
         printBookings(allBookings);
-        // vypise prvych limit=8 rezervacii Typu ? REKREACNY
 
+        // vypise prvych limit=8 rezervacii Typu ? REKREACNY
         printRekreacnyTypOfRezervation(8,allBookings);
+
         printGuestStatistics(allBookings);
+        System.out.println("Pocet vsetkých rezervacii :  "+newBooking.getNumberOfRezervations() );
+
+
+
+
+
 
 
     }
@@ -170,22 +177,25 @@ public class Main {
 
     }
 
-    private static void printBookings(List<Booking> allBookings) {
+
+private static void printBookings(List<Booking> allBookings) {
         System.out.println("Zoznam vsetkych rezervacii: ");
-        System.out.println("      Od             do              Meno hosťa  Narodený/á[hostí,výh.more] cena ");
+        System.out.println("      Od             do              Meno hosťa  Narodený/á[hostí,výh.more] cena   počet dní        cenaPobytu");
         DateTimeFormatter formatterCZ = DateTimeFormatter.ofPattern("d. M. yyyy");
         for (Booking booking : allBookings) {
             String seaView = booking.getRoom().isSeaView() ? "ano" : "nie";
             System.out.println(booking.getStartDate().format(formatterCZ) +"     "
                     + booking.getEndDate().format(formatterCZ) +"       "+ booking.getMainGuest()
                     +"[" +booking.getNumberOfGuestsOfOneRezervation()+","+ seaView+" ]"+"    "
-                    +booking.getRoom().getPricePerNight());
+                    +booking.getRoom().getPricePerNight()+"        "+booking.getBookingLength()+"      "+booking.getPrice()+"    "+booking.getPrice());
         }
     }
 
 
+
+
     private static void printRekreacnyTypOfRezervation(int limit,List<Booking> allBookings) {
-        System.out.println("Vupis prvých  " +prevodNaSlova(limit) +" rekreacných rezervacii:");
+        System.out.println("Vypis prvých  " +prevodNaSlova(limit) +" rekreacných rezervacii:");
         int pocetRekreacnychRezervacii = 0;
         for (Booking booking : allBookings) {
             if(booking.getTypeOfVacation()==VacationType.REKREACNY && pocetRekreacnychRezervacii<limit){

@@ -1,6 +1,7 @@
 package com.engeto.hotel;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -156,7 +157,18 @@ public class Booking {
         return guestCount;
     }
 
+    public long getBookingLength(){
+        LocalDate start =   startDate;
+        LocalDate end =endDate;
+        long daysBetween = ChronoUnit.DAYS.between(start, end);
 
+        return daysBetween;
+    }
+
+    public long getPrice(){
+        return (long) (getBookingLength() * getRoom().getPricePerNight());
+
+    }
 
 
 }
