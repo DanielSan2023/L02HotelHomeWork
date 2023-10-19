@@ -2,10 +2,9 @@ import com.engeto.hotel.*;
 
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class Main {
@@ -150,12 +149,28 @@ public class Main {
         printGuestStatistics(allBookings);
         System.out.println("Pocet vsetkých rezervacii :  "+newBooking.getNumberOfRezervations() );
 
+        // Analyza  poctu rezervacii podla mesiacov 2023
+        printRezervationsStatisticsPerYear(allBookings);
 
 
+    }
 
+    private static void printRezervationsStatisticsPerYear(List<Booking> allBookings) {
+        Map<Month, Integer> reservationsPerMonth = new HashMap<>();
+        Map<Month, Float> pricePerMonth = new HashMap<>();
+        for (Booking booking : allBookings) {
+            LocalDate startDate1 = booking.getStartDate();
+            Month startMonth = startDate1.getMonth();
+            // Ak mesiac ešte nie je v mape, tak init hodnota 1, inak zvýšim počet rezervácií pre daný mesiac
+            reservationsPerMonth.put(startMonth, reservationsPerMonth.getOrDefault(startMonth, 0) + 1);
+            pricePerMonth.put(startMonth, (float) (pricePerMonth.getOrDefault(startMonth, 0f) + booking.getRoom().getPricePerNight()));}
 
+        for (Month month : Month.values()) {
+            int count = reservationsPerMonth.getOrDefault(month, 0);
+            float revenue = pricePerMonth.getOrDefault(month, 0f);
 
-
+            System.out.println("2023 " + month + ": " + count + " rezervácií, " + "Celková cena: " + revenue + " CZK");
+        }
     }
 
     private static void printGuestStatistics(List<Booking> allBookings) {
@@ -178,7 +193,7 @@ public class Main {
     }
 
 
-private static void printBookings(List<Booking> allBookings) {
+    private static void printBookings(List<Booking> allBookings) {
         System.out.println("Zoznam vsetkych rezervacii: ");
         System.out.println("      Od             do              Meno hosťa  Narodený/á[hostí,výh.more] cena   počet dní        cenaPobytu");
         DateTimeFormatter formatterCZ = DateTimeFormatter.ofPattern("d. M. yyyy");
@@ -187,7 +202,8 @@ private static void printBookings(List<Booking> allBookings) {
             System.out.println(booking.getStartDate().format(formatterCZ) +"     "
                     + booking.getEndDate().format(formatterCZ) +"       "+ booking.getMainGuest()
                     +"[" +booking.getNumberOfGuestsOfOneRezervation()+","+ seaView+" ]"+"    "
-                    +booking.getRoom().getPricePerNight()+"        "+booking.getBookingLength()+"      "+booking.getPrice()+"    "+booking.getPrice());
+                    +booking.getRoom().getPricePerNight()+"        "+booking.getBookingLength()+"      "
+                    +booking.getPrice()+"    "+booking.getPrice());
         }
     }
 
