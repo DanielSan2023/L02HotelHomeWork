@@ -214,7 +214,7 @@ public class Main {
         System.out.println("Vypis prvých  " +prevodNaSlova(limit) +" rekreacných rezervacii:");
         int pocetRekreacnychRezervacii = 0;
         for (Booking booking : allBookings) {
-            if(booking.getTypeOfVacation()==VacationType.REKREACNY && pocetRekreacnychRezervacii<limit){
+            if(booking.getTypeOfVacation().equals(VacationType.REKREACNY) && pocetRekreacnychRezervacii<limit){
                 pocetRekreacnychRezervacii++;
                 System.out.println(booking.getMainGuest()+"    "+booking.getTypeOfVacation());
             }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="077dca63-f85c-49a2-8965-3ccd40569993" name="Changes" comment="add print count getNumberOfRezervations()">
+    <list default="true" id="077dca63-f85c-49a2-8965-3ccd40569993" name="Changes" comment="add Rezervations Statistics per YEAR">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/hotel/Booking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/engeto/hotel/BookingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/engeto/hotel/BookingManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +39,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="ab9d8122-3166-499c-8c0a-f79e30512fa8" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -54,8 +58,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DanielSan/EngetoExercisesMyself/DusanKontrolaCodu&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DanielSan/EngetoExercisesMyself/DusanoveProjekty&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
 }</component>
   <component name="RunManager">
@@ -186,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697715913601</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add Rezervations Statistics per YEAR">
+      <created>1697718351382</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1697718351382</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,6 +206,11 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -243,6 +259,7 @@
     <MESSAGE value="add method printRekreacnyTypOfRezervation" />
     <MESSAGE value="add print printGuestStatistics" />
     <MESSAGE value="add print count getNumberOfRezervations()" />
-    <option name="LAST_COMMIT_MESSAGE" value="add print count getNumberOfRezervations()" />
+    <MESSAGE value="add Rezervations Statistics per YEAR" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Rezervations Statistics per YEAR" />
   </component>
 </project>

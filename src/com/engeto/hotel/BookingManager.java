@@ -1,12 +1,10 @@
 package com.engeto.hotel;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookingManager {
-    Booking booking = new Booking();
+
     List<Booking> bookingList = new ArrayList<>();
 
 
@@ -54,19 +52,22 @@ public class BookingManager {
         return count;
     }
 
-    public BigDecimal getAverageGuests(int numberOfGuest){
 
 
+
+
+    public double getAverageGuests(int numberOfGuests) {
         if (bookingList.size() > 0) {
-            BigDecimal averageGuests = BigDecimal.valueOf(numberOfGuest)
-                    .divide(BigDecimal.valueOf(bookingList.size()),
-                            2, RoundingMode.HALF_UP);
-            return averageGuests;
+            int totalGuests = 0;
+            for (Booking booking : bookingList) {
+                totalGuests += booking.getNumberOfGuestsOfOneRezervation();
+            }
+            double averageGuests = (double) totalGuests / bookingList.size();
+            return Math.round(averageGuests * 100.0) / 100.0; // Zaokrúhli priemer na dve desatinné miesta
         } else {
-            return BigDecimal.ZERO;
+            return 0.0;
         }
     }
-
 
 
 }
