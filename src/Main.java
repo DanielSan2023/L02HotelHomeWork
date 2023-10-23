@@ -174,18 +174,22 @@ public class Main {
     }
 
     private static void printGuestStatistics(List<Booking> allBookings) {
-        int pocetRez1Host=0;
-        int pocetRez2Host=0;
-        int pocetRezViacHost=0;
+        int pocetRez1Host = 0;
+        int pocetRez2Host = 0;
+        int pocetRezViacHost = 0;
+
         for (Booking booking : allBookings) {
-            if(booking.getNumberOfGuestsOfOneRezervation()==1){ pocetRez1Host++;}
-            if(booking.getNumberOfGuestsOfOneRezervation()==2){ pocetRez2Host++;}
-            if(booking.getNumberOfGuestsOfOneRezervation()>2){ pocetRezViacHost++;}
-            }
-        System.out.println("Celkovy pocet rezervacii  s jednym hostom je : "+pocetRez1Host);
-        System.out.println("Celkovy pocet rezervacii  s dvoma hostmy je : "+pocetRez2Host);
-        System.out.println("Celkovy pocet rezervacii  s viac ako dva hostmy je : "+pocetRezViacHost);
+            int numberOfGuests = booking.getNumberOfGuestsOfOneRezervation();
+            if (numberOfGuests == 1) {  pocetRez1Host++;}
+            else if (numberOfGuests == 2) { pocetRez2Host++; }
+            else if (numberOfGuests > 2) {   pocetRezViacHost++;  }
+        }
+
+        System.out.println("Celkovy pocet rezervacii s jednym hostom je: " + pocetRez1Host);
+        System.out.println("Celkovy pocet rezervacii s dvoma hostmy je: " + pocetRez2Host);
+        System.out.println("Celkovy pocet rezervacii s viac ako dva hostmy je: " + pocetRezViacHost);
     }
+
 
     private static  void fillBookings(BookingManager bookingManager, List<Booking> bookings){
         bookingManager.addBookingList(bookings);
