@@ -13,7 +13,7 @@ public class Booking {
     private LocalDate endDate;
     private VacationType typeOfVacation; //Enum>REKREACNY, FIREMNY,RODINNY,SLUZOBNY
     private List<Guest> otherGuests;
-   List<Booking> bookingAll = new ArrayList<>();
+
 
 
 
@@ -117,38 +117,15 @@ public class Booking {
     }
     //endregion
 
-    public List<Guest> getOtherGuests() {
-        return otherGuests;
-    }
 
-    public void setOtherGuests(List<Guest> otherGuests) {
-        this.otherGuests = otherGuests;
-    }
-
-
-    public  void addBookingAllList(List<Booking> bookingList){
-
-        this.bookingAll.addAll(bookingList);
-    }
-
-
-
-
-    public int getNumberOfGuests() { // vrati pocet hosti zo vsetkych rezervacii
-        int guestCount = 0;
-        for (Booking booking : bookingAll) {
-            guestCount += booking.getNumberOfGuestsOfOneRezervation();
-        }
-        return guestCount;
-    }
 
     public int getNumberOfGuestsOfOneRezervation() {   // vrati pocet hosti na konkretnu reyervaciu
         int guestCount = 0;
         if (mainGuest != null) {
-            guestCount++; // Přidejte hlavního hosta z této rezervace
+            guestCount++; // Přida hlavního hosta z této rezervace
         }
         if (otherGuests != null) {
-            guestCount += otherGuests.size(); // Přidejte počet dalších hostů z této rezervace
+            guestCount += otherGuests.size(); // Přida počet dalších hostů z této rezervace
         }
         return guestCount;
     }
@@ -165,6 +142,5 @@ public class Booking {
         return (long) (getBookingLength() * getRoom().getPricePerNight());
 
     }
-
 
 }

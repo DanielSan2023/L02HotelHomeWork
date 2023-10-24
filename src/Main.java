@@ -99,12 +99,11 @@ public class Main {
         System.out.println("Počet pracovných pobytov : " + newBooking.getNumberOfWorkingBookings());
 
         //--------------------  Průměrný počet hostů na rezervaci   ---------------------//
-        Booking bookingAllList = new Booking();
+        Booking bookingAll = new Booking();
         // posielam vsetky rezervacie do bookingAll
-        bookingAllList.addBookingAllList(bookings);
-        System.out.println("Pocet vsetkych hosti: " + bookingAllList.getNumberOfGuests());
+        System.out.println("Pocet vsetkych hosti: " + newBooking.getNumberOfGuests());
         System.out.println("Pocet vsetkych rezervacii:" + newBooking.getNumberOfRezervations());
-        System.out.println("Priemerny pocet hosti na rezervaciu: " + newBooking.getAverageGuests(bookingAllList.getNumberOfGuests()));
+        System.out.println("Priemerny pocet hosti na rezervaciu: " + newBooking.getAverageGuests(newBooking.getNumberOfGuests()));
 
         //-------------------Vytvoření testovacích dat----------------------------------//
         List<Booking> bookingsForTest = new ArrayList<>();
